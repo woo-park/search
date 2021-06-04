@@ -44,6 +44,7 @@ class SearchRestController {
 	@RequestMapping(value="/get", method = RequestMethod.POST)
 	List<Flight> search(@RequestBody SearchQuery query){
 		logger.info("Input : "+ query);
+		logger.info("originAirportShutdownList: " + originAirportShutdownList);
 		if(Arrays.asList(originAirportShutdownList.split(",")).contains(query.getOrigin())){
 			logger.info("The origin airport is in shutdown state");
 			return new ArrayList<Flight>();
